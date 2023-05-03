@@ -1,0 +1,80 @@
+h1{
+    margin: auto;
+    text-align: center;
+    font-weight:bold;
+    margin-bottom: 15px;
+}
+
+h2{
+    font-size: 13px;
+    text-align: center;
+    position: relative;
+}
+.h3{
+    font-size: 13px;
+    color: #2596be;
+    display: inline;
+}
+body{
+    justify-content: center;
+    display: flex;
+}
+
+form{
+    margin: auto;
+    width: 47%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+input{
+    width: 100%;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+.first-name, .last-name, .password, .password-confirmation{
+    width: 50%;
+    display: flex;
+}
+
+
+.Register{
+    background-color: #2596be;
+}
+
+.Signin{
+    background-color: #5db85b;
+}
+
+.Register, .Signin{
+    width: 50%;
+    display: flex;
+}
+
+.check-part{
+    align-items: center;
+    margin-left: -15px;
+    top:5px;
+    display: flex;
+}
+
+input[type="checkbox"] {
+    flex: 1 0;
+    width: max-content;
+    margin-right: 8px;
+}
+
+.terms{
+    margin: 5px;
+    padding: 10px;
+}
+
+button{
+    padding: 10px;
+    border-radius: 5px;
+
+}
