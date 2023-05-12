@@ -263,6 +263,10 @@ const Controller = ((model, view) => {
   const bootstrap = () => {
     init();
     
+    handleAddToCart();
+    handleUpdateAmount();
+    handleDelete();
+    handleCheckout();
     state.subscribe = (() => {
       view.renderInventoryList(state.inventory, handleAddToCart, handleUpdateAmount);
       view.renderCartList(state.cart, handleDelete);
