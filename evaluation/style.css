@@ -36,16 +36,29 @@ body {
 .cart-wrapper {
     margin-top: 20px;
   }
-  
+
+.minus-btn {
+  background-color: rgba(255, 0, 0, 0.459);
+}
+
+.plus-btn {
+  background-color: rgba(102, 233, 102, 0.473);
+}
+
+.add-to-cart{
+  background-color: rgba(0, 0, 255, 0.521);
+}
 .checkout-btn {
     display: block;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #4caf50;
+    background-color: black;
     color: #fff;
     border: none;
     cursor: pointer;
+    margin-right: 100px;
   }
+
   
 ul {
     list-style: none;
@@ -56,6 +69,7 @@ li {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    background-color:rgba(187, 204, 187, 0.308);
   }
   
 li span {
