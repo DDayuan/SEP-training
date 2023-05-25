@@ -1,0 +1,22 @@
+html {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.App {
+  text-align: center;
+  flex-direction: column;
+}
+
+.App .todo-list-container ul {
+  padding: 15px;
+  margin: 0px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px black solid;
+  border-radius: 5px;
+}

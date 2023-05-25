@@ -1,0 +1,16 @@
+{
+  "todos": [
+    {
+      "content": "swimming",
+      "id": 2
+    },
+    {
+      "content": "jumping around",
+      "id": 3
+    },
+    {
+      "content": "reading",
+      "id": 4
+    }
+  ]
+}
