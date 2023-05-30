@@ -1,0 +1,26 @@
+.todoitem {
+    height: 30px;
+    list-style: none;
+    background-color: aqua;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    gap:5px;
+}
+
+.text, .edit-text {
+    font-size: 20px;
+}
+
+.button {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .button button {
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+  }
