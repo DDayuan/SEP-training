@@ -1,0 +1,13 @@
+1.redux is a library in JS, which manages the global state. It follows the principles of flux, which uses unidirectional data flow and immutability. To update the state, Redux uses pure functions called "reducers." A reducer takes the current state and an action as inputs and returns a new state. Actions are plain JavaScript objects that describe the type of operation to be performed on the state. By dispatching actions to the store, you trigger the execution of the corresponding reducer, which updates the state accordingly.
+
+2. The flux is just a pattern. However, redux is a library although it follows the pattern of flux. And inside of them, flux can have multiple stores, the redux only have one. And the flux uses store to manage the logic handling. However, redux uses reducer manage the logic handling.
+
+3. The Context API is a feature provided by React that allows you to share data across the component tree without having to pass props manually through each intermediate component. It provides a way to create a global state that can be accessed by any component in the tree. It has two components which are context provider and consumer. 
+
+4. advantage: redux uses only one store to store entire state makes easy to manage. Redux follows a strict pattern of unidirectional data flow, making state changes more predictable.
+Disadvantage: When handling the simple tasks, redux may make the whole process harder. The process of propagating state changes through reducers and triggering component re-renders can impact performance.
+
+5. The Context API allows you to create global state that can be accessed by any component in the tree. The Context API helps alleviate the problem of "prop drilling". By using the Context API, you can provide data to multiple components without explicitly passing props to each intermediate component.
+Updating the context and triggering re-renders can be less performant compared to passing props directly between parent and child components. Unlike Redux, the Context API does not have built-in middleware support.
+
+6.import connect first, and write your own mapStateToProps and mapDispatchToProps function. Finally use your connect function to connect those two function with store.
