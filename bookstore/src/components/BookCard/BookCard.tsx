@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import wishilistSlice, { addToWishlist, removeFromWishlist } from "../redux/wishilistSlice";
-import { Book, RootState } from "../types";
+import { Book} from "../types";
+import { RootState } from "../redux/store";
 import "./BookCard.css";
 
 interface BookCardProps {

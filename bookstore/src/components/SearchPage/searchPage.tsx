@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { SearchBooks } from "../API";
+import { SearchBooks, GetTitleSuggestions } from "../API";
 import { BrowserRouter as Router, Link, NavLink, useNavigate, Routes, Route } from 'react-router-dom';
 import BookCard from "../BookCard/BookCard";
-import { Book } from "../types";
+import { useDispatch, useSelector } from "react-redux";
 import "./searchPage.css"
 import { Pagination } from "@mui/material";
+import { setQuery, setBooks, setIsLoading, setPage, setTotalPages, setSuggestions } from '../redux/searchPageSlice';
+import { RootState } from "../redux/store";
+
 
 const SearchPage: React.FC = () => {
-    const [query, setQuery] = useState(" ");
-    const [books, setBooks] = useState<Book[]>([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
+    const dispatch = useDispatch();
+    const { query, books, isLoading, page, totalPages, suggestions } = useSelector((state: RootState) => state.searchPage);
 
     const handleSearch = async () => {
         if (!query.trim()) {
@@ -24,9 +24,9 @@ const SearchPage: React.FC = () => {
             const data = await SearchBooks(query, page);
             console.log(data);
             if (data.items) {
-                setBooks(data.items);
+                dispatch(setBooks(data.items));
                 console.log("Total items:", data.totalItems);
-                setTotalPages(Math.ceil(data.totalItems / 20));
+                dispatch(setTotalPages(Math.ceil(data.totalItems / 20)));
             } else {
                 alert("No books found. Try a different query.");
             }
@@ -34,12 +34,41 @@ const SearchPage: React.FC = () => {
             console.error(error);
             alert("An error occurred while searching for books");
         } finally {
-            setIsLoading(false);
+            dispatch(setIsLoading(false));
         }
     };
 
+    const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const input = e.target.value;
+        dispatch(setQuery(input));
+        if (input.trim()) {
+            const newSuggestions = await GetTitleSuggestions(input);
+            dispatch(setSuggestions(newSuggestions));
+        } else {
+            dispatch(setSuggestions([]));
+        }
+    }
+
+    const handleInputBlur = () => {
+        setTimeout(() => dispatch(setSuggestions([])), 100);
+    };
+
+    const handleInputFocus = async () => {
+        if (query.trim()) {
+            const newSuggestions = await GetTitleSuggestions(query);
+            dispatch(setSuggestions(newSuggestions));
+        }
+    }
+
+    const handleSuggestionClick = ( suggestion: string) => {
+        console.log("Suggestion clicked:", suggestion);
+        dispatch(setQuery(suggestion));
+        dispatch(setSuggestions([]));
+        handleSearch();
+    }
+
     const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
-        setPage(value);
+        dispatch(setPage(value));
     };
 
     useEffect(() => {
@@ -58,12 +87,27 @@ const SearchPage: React.FC = () => {
             </li>
             <h1 className="heading">Search Page</h1>
             <li>
-                <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} />
+                <input
+                    type="text"
+                    value={query}
+                    onChange={handleInputChange}
+                    onBlur={handleInputBlur}
+                    onFocus={handleInputFocus}
+                />
                 <button onClick={
                     () => {
                         handleSearch();
                         setPage(1);
-                }}>Search</button>
+                    }}>Search</button>
+                {suggestions.length > 0 && (
+                    <div className="suggestion-container">
+                    {suggestions.map((suggestion, index) => (
+                        <div key={index} onMouseDown={() => handleSuggestionClick(suggestion)}>
+                            {suggestion}
+                        </div>
+                    ))}
+                </div>
+                )}
             </li>
             {isLoading ? (
                 <p>Loading...</p>

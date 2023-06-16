@@ -12,7 +12,7 @@ export interface WishlistState {
     books: Book[];
 }
 
-export interface RootState {
-    wishlist: WishlistState;
-  }
+// export interface RootState {
+//     wishlist: WishlistState;
+//   }
 

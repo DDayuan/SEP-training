@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Link, NavLink, useNavigate, Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import BookCard from "../BookCard/BookCard";
-import { RootState } from "../types";
+import { RootState } from "../redux/store";
 import "./wishlistPage.css"
 
 const WishList: React.FC = () => {
@@ -21,9 +21,6 @@ const WishList: React.FC = () => {
                     <BookCard key={book.id} book={book} />
                 ))}
             </div>
-            {/* {wishlistBooks.map((book) => (
-            <BookCard key={book.id} book={book} />
-            ))} */}
         </div>)
 }
 
