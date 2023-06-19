@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Link, NavLink, useNavigate, Routes, Route } fr
 import BookCard from "../BookCard/BookCard";
 import { useDispatch, useSelector } from "react-redux";
 import "./searchPage.css"
-import { Pagination } from "@mui/material";
+import Pagination  from "../Pagination";
+//import { Pagination } from "@mui/material";
 import { setQuery, setBooks, setIsLoading, setPage, setTotalPages, setSuggestions } from '../redux/searchPageSlice';
 import { RootState } from "../redux/store";
 
@@ -18,7 +19,6 @@ const SearchPage: React.FC = () => {
             alert("Please enter a search query");
             return;
         }
-
         try {
             setIsLoading(true);
             const data = await SearchBooks(query, page);
@@ -27,6 +27,7 @@ const SearchPage: React.FC = () => {
                 dispatch(setBooks(data.items));
                 console.log("Total items:", data.totalItems);
                 dispatch(setTotalPages(Math.ceil(data.totalItems / 20)));
+                console.log("totalpage is", totalPages);
             } else {
                 alert("No books found. Try a different query.");
             }
@@ -94,11 +95,7 @@ const SearchPage: React.FC = () => {
                     onBlur={handleInputBlur}
                     onFocus={handleInputFocus}
                 />
-                <button onClick={
-                    () => {
-                        handleSearch();
-                        setPage(1);
-                    }}>Search</button>
+                <button onClick={handleSearch}>Search</button>
                 {suggestions.length > 0 && (
                     <div className="suggestion-container">
                     {suggestions.map((suggestion, index) => (
@@ -118,13 +115,14 @@ const SearchPage: React.FC = () => {
                     ))}
                 </div>
             )}
-            <Pagination
+            {/* <Pagination
                 variant="outlined"
                 count={totalPages}
                 page={page}
                 onChange={handlePageChange}
                 shape="rounded"
-            />
+            /> */}
+            <Pagination />
         </div>
     );
 }
