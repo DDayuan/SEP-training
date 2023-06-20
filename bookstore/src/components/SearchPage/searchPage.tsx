@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SearchBooks, GetTitleSuggestions } from "../API";
-import { BrowserRouter as Router, Link, NavLink, useNavigate, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, NavLink} from 'react-router-dom';
 import BookCard from "../BookCard/BookCard";
 import { useDispatch, useSelector } from "react-redux";
 import "./searchPage.css"
@@ -8,6 +8,7 @@ import Pagination  from "../Pagination";
 //import { Pagination } from "@mui/material";
 import { setQuery, setBooks, setIsLoading, setPage, setTotalPages, setSuggestions } from '../redux/searchPageSlice';
 import { RootState } from "../redux/store";
+import useDebounce from "../myLodash/myDebounce";
 
 
 const SearchPage: React.FC = () => {
@@ -39,15 +40,21 @@ const SearchPage: React.FC = () => {
         }
     };
 
-    const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        const input = e.target.value;
-        dispatch(setQuery(input));
+    const debounceGetTitleSuggestions = useDebounce((input: string) => {
         if (input.trim()) {
-            const newSuggestions = await GetTitleSuggestions(input);
-            dispatch(setSuggestions(newSuggestions));
+            console.log("reading input");
+            GetTitleSuggestions(input).then((newSuggestions) => {
+                dispatch(setSuggestions(newSuggestions));
+            });
         } else {
             dispatch(setSuggestions([]));
         }
+    }, 2000);
+
+    const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const input = e.target.value;
+        dispatch(setQuery(input));
+        debounceGetTitleSuggestions(input);
     }
 
     const handleInputBlur = () => {
