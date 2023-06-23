@@ -48,7 +48,7 @@ const myThrottle = (cb, waitTime, opt) => {
 };
 
 const handleClick = () => {
-  console.log("nice");
+  console.log("test");
 };
 
 const debouncedFunc = myDebounce(handleClick, 2000, {
