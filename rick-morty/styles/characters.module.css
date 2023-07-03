@@ -1,0 +1,15 @@
+.header {
+    text-align: center;
+}
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    margin: 1em;
+    background-color: antiquewhite;
+    border: 30px solid antiquewhite;
+    border-radius: 30px;
+}

@@ -1,0 +1,32 @@
+.pagination {
+    
+    text-align: center;
+}
+.active-button {
+    height: 50px;
+    width: 40px;
+    border-radius: 25px; 
+    border: none; 
+    background-color: #40abdd; 
+    color: #ffffff; 
+    cursor: pointer;
+    margin: 5px;
+}
+.button {
+    height: 50px;
+    width: 40px;
+    border-radius: 25px; 
+    border: none; 
+    background-color: #4340dd; 
+    color: #ffffff; 
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button:hover {
+    background-color: #5b5af7; /* Changes the button color when hovering over it */
+  }
+  
+  .span {
+    font-size: 2em; /* Makes the span text larger */
+  }
