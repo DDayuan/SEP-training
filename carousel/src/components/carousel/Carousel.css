@@ -1,0 +1,47 @@
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.carousel__button--prev {
+    left: 10px;
+}
+
+.carousel__button--next {
+    right: 10px;
+}
+
+.carousel__slides {
+    display: flex;
+    transition: transform 0.5s linear;
+    width: 100%;
+}
+
+.carousel__slide {
+    flex: 0 0 100%;
+    width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+    .carousel__button {
+        top: initial;
+        transform: initial;
+        bottom: 10px;
+    }
+
+    .carousel__button--prev {
+        left: 10px;
+    }
+
+    .carousel__button--next {
+        right: 10px;
+    }
+}
