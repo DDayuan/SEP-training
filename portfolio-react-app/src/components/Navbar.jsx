@@ -39,11 +39,11 @@ const Navbar = () => {
             Skills
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="work" smooth={true} duration={500}>
             Work
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link to="contact" smooth={true} duration={500}>
             Contact
@@ -78,11 +78,11 @@ const Navbar = () => {
             Skills
           </Link>
         </li>
-        <li className="py-6 text-4xl ">
+        {/* <li className="py-6 text-4xl ">
           <Link onClick={handleClick} to="work" smooth={true} duration={500}>
             Work
           </Link>
-        </li>
+        </li> */}
         <li className="py-6 text-4xl ">
           <Link onClick={handleClick} to="contact" smooth={true} duration={500}>
             Contact
@@ -101,14 +101,14 @@ const Navbar = () => {
               Linkedin <FaLinkedin size={30} />
             </a>
           </li> */}
-          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#333333]">
+          {/* <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#333333]">
             <a
               className="flex justify-between items-center w-full text-gray-300"
               href="https://github.com/DDayuan"
             >
               Github <FaGithub size={30} />
             </a>
-          </li>
+          </li> */}
           {/* <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-[#6fc2be]">
             <a
               className="flex justify-between items-center w-full text-gray-300"
